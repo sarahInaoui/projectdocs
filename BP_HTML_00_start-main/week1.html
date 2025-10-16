@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Treintijden - NMBS</title>
+
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue: #0070c0;
+      --bg-dark: #000;
+      --bg-light: #ffffff;
+      --text-dark: #000;
+      --text-light: #fff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    /* --- LOADER --- */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .spinner {
+      border: 6px solid #333;
+      border-top: 6px solid var(--blue);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      margin-top: 20px;
+      color: #fff;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* --- TOPBALK --- */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #000;
+      color: white;
+      padding: 10px 20px;
+      font-weight: 500;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-symbol {
+      border: 3px solid var(--blue);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.5rem;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+    }
+
+    .lang-time {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .lang {
+      border: 1px solid white;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lang::after {
+      content: "▼";
+      font-size: 0.6rem;
+    }
+
+    .time {
+      font-size: 0.95rem;
+      min-width: 150px;
+      text-align: right;
+    }
+
+    /* --- THEMA KNOP --- */
+    .theme-toggle {
+      background: none;
+      border: 1px solid #fff;
+      color: #fff;
+      border-radius: 6px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* --- FILTERS --- */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      background-color: #000;
+      padding: 15px;
+    }
+
+    .search-input, .delay-filter {
+      padding: 10px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background-color: #111;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .search-input:focus, .delay-filter:focus {
+      background-color: #222;
+      border: 1px solid var(--blue);
+    }
+
+    .delay-filter {
+      cursor: pointer;
+    }
+
+    body.light .filter-bar {
+      background-color: #f8f8f8;
+    }
+
+    body.light .search-input, body.light .delay-filter {
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #ccc;
+    }
+
+    /* --- TABEL --- */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1.1rem;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #000;
+      color: #fff;
+      border-bottom: 2px solid var(--blue);
+      font-weight: 700;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #fff;
+      color: #000;
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--blue);
+      color: #fff;
+    }
+
+    td:nth-child(1) { font-style: italic; }
+    td:nth-child(2) { font-weight: 700; }
+
+    .vertraging {
+      color: red;
+      font-weight: 700;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      font-size: 0.85rem;
+    }
+
+    .content {
+      display: none;
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- LICHTMODUS --- */
+    body.light {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    body.light .top-bar {
+      background-color: var(--blue);
+      color: #fff;
+    }
+
+    body.light th {
+      background-color: var(--blue);
+    }
+
+    body.light tr:nth-child(odd) {
+      background-color: #f2f2f2;
+      color: #000;
+    }
+
+    body.light tr:nth-child(even) {
+      background-color: var(--blue);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LAADER -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <div class="loading-text">Bezig met laden…</div>
+  </div>
+
+  <!-- INHOUD -->
+  <div class="content">
+    <div class="top-bar">
+      <div class="logo">
+        <div class="logo-symbol">B</div>
+      </div>
+      <div class="lang-time">
+        <div class="lang">NL</div>
+        <div class="time" id="live-time"></div>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+      </div>
+    </div>
+
+    <!-- Zoek & Filter -->
+    <div class="filter-bar">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="🔍 Zoek op trein, bestemming of perron..."
+      />
+      <select id="delayFilter" class="delay-filter">
+        <option value="all">Alle treinen</option>
+        <option value="delayed">Alleen vertraagd</option>
+        <option value="on-time">Alleen stipt</option>
+      </select>
+    </div>
+
+    <!-- Tabel -->
+    <table id="trainTable">
+      <thead>
+        <tr>
+          <th>Trein</th>
+          <th>Bestemming</th>
+          <th>Vertrektijd</th>
+          <th>Vertraging</th>
+          <th>Perron</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+
+    <footer>NMBS Treintijden - voorbeeldpagina</footer>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const tableBody = document.getElementById("tableBody");
+
+    const trains = [
+      { id: "IC04", bestemming: "Gent-St-Pieters", tijd: "16:01", vertraging: "+8", perron: "10" },
+      { id: "S70", bestemming: "Amsterdam", tijd: "16:15", vertraging: "", perron: "4" },
+      { id: "IC22", bestemming: "Gent-Dampoort", tijd: "16:30", vertraging: "+8", perron: "2" },
+      { id: "IC37", bestemming: "Brugge", tijd: "16:47", vertraging: "+1", perron: "3" },
+      { id: "IC04", bestemming: "Diest", tijd: "17:15", vertraging: "+2", perron: "7" },
+      { id: "IC05", bestemming: "Hasselt", tijd: "17:27", vertraging: "", perron: "9" },
+      { id: "S71", bestemming: "Rotterdam", tijd: "17:35", vertraging: "", perron: "1" },
+    ];
+
+    function renderTable() {
+      tableBody.innerHTML = "";
+      trains.forEach(t => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${t.id}</td>
+          <td>${t.bestemming}</td>
+          <td>${t.tijd}</td>
+          <td class="${t.vertraging ? 'vertraging' : ''}">${t.vertraging}</td>
+          <td>${t.perron}</td>`;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // --- FILTERS ---
+    const searchInput = document.getElementById("searchInput");
+    const delayFilter = document.getElementById("delayFilter");
+
+    function filterTable() {
+      const searchValue = searchInput.value.toLowerCase();
+      const delayValue = delayFilter.value;
+      const rows = document.querySelectorAll("#trainTable tbody tr");
+
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        const hasDelay = row.querySelector(".vertraging")?.textContent.trim() !== "";
+        const matchesSearch = text.includes(searchValue);
+        const matchesDelay =
+          delayValue === "all" ||
+          (delayValue === "delayed" && hasDelay) ||
+          (delayValue === "on-time" && !hasDelay);
+
+        row.style.display = matchesSearch && matchesDelay ? "" : "none";
+      });
+    }
+
+    searchInput.addEventListener("keyup", filterTable);
+    delayFilter.addEventListener("change", filterTable);
+
+    // --- LAADER ---
+    function showLoader(duration = 2000) {
+      document.getElementById("loader").style.display = "flex";
+      document.querySelector(".content").style.display = "none";
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.querySelector(".content").style.display = "block";
+        renderTable();
+      }, duration);
+    }
+
+    window.addEventListener("load", () => showLoader());
+
+    // --- KLOK ---
+    function updateClock() {
+      const now = new Date();
+      const days = ["ZO", "MA", "DI", "WO", "DO", "VR", "ZA"];
+      const months = ["JAN", "FEB", "MRT", "APR", "MEI", "JUN", "JUL", "AUG", "SEP", "OKT", "NOV", "DEC"];
+      const day = days[now.getDay()];
+      const date = now.getDate();
+      const month = months[now.getMonth()];
+      const hours = now.getHours().toString().padStart(2, "0");
+      const minutes = now.getMinutes().toString().padStart(2, "0");
+      document.getElementById("live-time").textContent = `${day} ${date} ${month} ${hours}:${minutes}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // --- THEMA TOGGLE ---
+    const toggleBtn = document.getElementById("themeToggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      toggleBtn.textContent = document.body.classList.contains("light") ? "☀️" : "🌙";
+    });
+
+    // --- AUTOMATISCHE VERNIEUWING ---
+    setInterval(() => {
+      showLoader(1500);
+    }, 60000); // elke minuut
+  </script>
+
+</body>
+</html>
+
