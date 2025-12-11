@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwind Fonts Overview</title>
+  <link href="./dist/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/flexboxes.css">
+  <link rel="stylesheet" href="assets/nav.css">
+  <link rel="stylesheet" href="assets/typography.css">
+</head>
+<body class="font-sans text-gray-800
+">
+  <!-- Header Navigation -->
+  <header class="w-full shadow p-4 flex items-center justify-between">
+    <a class="px-2 py-2 rounded text-xs " href="index.html">BP HTML 07 Tailwind</a>
+
+    <nav>
+       <ul class="flex space-x-4 text-xs">
+         <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page1.html">Typography</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page2.html">Colors</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page3.html">Grids</a></li> 
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page4.html">UI</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page5.html">Tables</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page6.html">Components</a></li> 
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page7.html">Cheatsheet</a></li> 
+      </ul>
+    </nav>
+  </header>
+  <div class="mx-auto p-4 flex">
+    <!-- Main Content -->
+      
+    <main class="container p-6 rounded space-y-6">
+  <h1 class="text-3xl font-bold mb-6">Tailwind CSS Colors Overview</h1>
+
+  <!-- Text Colors -->
+  <section class="grid grid-cols-2 gap-6">
+    <div>
+       <h3 class="font-bold">Text Colors</h3>
+      <p>Use <code>text-{color}-{shade}</code> to apply text colors.</p>
+      <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;p class="text-red-500"&gt;Red text&lt;/p&gt;
+&lt;p class="text-blue-500"&gt;Blue text&lt;/p&gt;
+&lt;p class="text-green-500"&gt;Green text&lt;/p&gt;
+&lt;p class="text-yellow-500"&gt;Yellow text&lt;/p&gt;
+      </pre>
+    </div>
+    <div class="space-y-1 p-4 bg-white/25 rounded">
+      <p class="text-red-500">Red text (.text-red-500)</p>
+      <p class="text-blue-500">Blue text (.text-blue-500)</p>
+      <p class="text-green-500">Green text (.text-green-500)</p>
+      <p class="text-yellow-500">Yellow text (.text-yellow-500)</p>
+    </div>
+  </section>
+
+  <!-- Background Colors -->
+  <section class="grid grid-cols-2 gap-6">
+    <div>
+       <h3 class="font-bold">Background Colors</h3>
+      <p>Use <code>bg-{color}-{shade}</code> for background colors.</p>
+      <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;div class="bg-red-200 p-2"&gt;Red background&lt;/div&gt;
+&lt;div class="bg-blue-200 p-2"&gt;Blue background&lt;/div&gt;
+&lt;div class="bg-green-200 p-2"&gt;Green background&lt;/div&gt;
+&lt;div class="bg-yellow-200 p-2"&gt;Yellow background&lt;/div&gt;
+      </pre>
+    </div>
+    <div class="space-y-1 p-4 bg-white/25 rounded">
+      <div class="bg-red-200 p-2 rounded">Red background (.bg-red-200)</div>
+      <div class="bg-blue-200 p-2 rounded">Blue background (.bg-blue-200)</div>
+      <div class="bg-green-200 p-2 rounded">Green background (.bg-green-200)</div>
+      <div class="bg-yellow-200 p-2 rounded">Yellow background (.bg-yellow-200)</div>
+    </div>
+  </section>
+
+  <!-- Border Colors -->
+  <section class="grid grid-cols-2 gap-6">
+    <div>
+       <h3 class="font-bold">Border Colors</h3>
+      <p>Use <code>border-{color}-{shade}</code> for borders.</p>
+      <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;div class="border-4 border-red-500 p-2"&gt;Red border&lt;/div&gt;
+&lt;div class="border-4 border-blue-500 p-2"&gt;Blue border&lt;/div&gt;
+&lt;div class="border-4 border-green-500 p-2"&gt;Green border&lt;/div&gt;
+&lt;div class="border-4 border-yellow-500 p-2"&gt;Yellow border&lt;/div&gt;
+      </pre>
+    </div>
+    <div class="space-y-1 p-4 bg-white/25 rounded">
+      <div class="border-4 border-red-500 p-2 rounded">Red border (.border-red-500)</div>
+      <div class="border-4 border-blue-500 p-2 rounded">Blue border (.border-blue-500)</div>
+      <div class="border-4 border-green-500 p-2 rounded">Green border (.border-green-500)</div>
+      <div class="border-4 border-yellow-500 p-2 rounded">Yellow border (.border-yellow-500)</div>
+    </div>
+  </section>
+
+  <!-- Placeholder Colors -->
+  <section class="grid grid-cols-2 gap-6">
+    <div>
+       <h3 class="font-bold">Placeholder Colors</h3>
+      <p>Use <code>placeholder-{color}-{shade}</code> for input placeholders.</p>
+      <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;input class="placeholder-gray-400" placeholder="Gray placeholder"&gt;
+&lt;input class="placeholder-red-500" placeholder="Red placeholder"&gt;
+      </pre>
+    </div>
+    <div class="space-y-1 p-4 bg-white/25 rounded">
+      <input class="placeholder-gray-400 border p-2 rounded w-full" placeholder="Gray placeholder">
+      <input class="placeholder-red-500 border p-2 rounded w-full" placeholder="Red placeholder">
+    </div>
+  </section>
+
+  <!-- Hover Colors -->
+  <section class="grid grid-cols-2 gap-6">
+    <div>
+       <h3 class="font-bold">Hover Colors</h3>
+      <p>Use <code>hover:text-{color}-{shade}</code> or <code>hover:bg-{color}-{shade}</code>.</p>
+      <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;p class="hover:text-blue-500"&gt;Hover me for blue text&lt;/p&gt;
+&lt;div class="hover:bg-green-200 p-2"&gt;Hover me for green background&lt;/div&gt;
+      </pre>
+    </div>
+    <div class="space-y-1 p-4 bg-white/25 rounded">
+      <p class="hover:text-blue-500">Hover me → blue text</p>
+      <div class="hover:bg-green-200 p-2 rounded">Hover me → green background</div>
+    </div>
+  </section>
+
+  <!-- Gradient Colors -->
+  <section class="grid grid-cols-2 gap-6">
+    <div>
+       <h3 class="font-bold">Gradient Colors</h3>
+      <p>Use <code>bg-gradient-to-{direction} from-{color} to-{color}</code> for gradient backgrounds.</p>
+      <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;div class="bg-gradient-to-r from-red-400 to-blue-400 p-4"&gt;Gradient&lt;/div&gt;
+&lt;div class="bg-gradient-to-b from-green-400 to-yellow-400 p-4"&gt;Gradient&lt;/div&gt;
+      </pre>
+    </div>
+    <div class="space-y-1 p-4 bg-white/25 rounded">
+      <div class="bg-gradient-to-r from-red-400 to-blue-400 p-4 rounded text-white text-center">Red → Blue</div>
+      <div class="bg-gradient-to-b from-green-400 to-yellow-400 p-4 rounded text-white text-center">Green → Yellow</div>
+    </div>
+  </section>
+
+</main>
+
+
+
+  </div>
+</body>
+</html>

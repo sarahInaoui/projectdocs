@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwind Fonts Overview</title>
+  <link href="./dist/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/flexboxes.css">
+  <link rel="stylesheet" href="assets/nav.css">
+  <link rel="stylesheet" href="assets/typography.css">
+</head>
+<body class="font-sans text-gray-800
+">
+  <!-- Header Navigation -->
+  <header class="w-full shadow p-4 flex items-center justify-between">
+    <a class="px-2 py-2 rounded text-xs " href="index.html">BP HTML 07 Tailwind</a>
+
+    <nav>
+      <ul class="flex space-x-4 text-xs">
+         <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page1.html">Typography</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page2.html">Colors</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page3.html">Grids</a></li> 
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page4.html">UI</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page5.html">Tables</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page6.html">Components</a></li> 
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page7.html">Cheatsheet</a></li> 
+      </ul>
+    </nav>
+  </header>
+  <div class="mx-auto p-4 flex">
+    <!-- Main Content -->
+      
+
+    
+<main class="container p-6 rounded space-y-10">
+
+  <h1 class="text-4xl font-bold mb-8 text-center">Tailwind CSS Cheatsheet</h1>
+
+  <!-- Fonts Section -->
+  <section class="space-y-6">
+    <h3 class="mb-4">Fonts</h3>
+
+    <!-- Font Families -->
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+         <h3>Font Families</h3>
+        <p>Use utility classes for different font families.</p>
+        <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;p class="font-sans"&gt;Sans-serif text&lt;/p&gt;
+&lt;p class="font-serif"&gt;Serif text&lt;/p&gt;
+&lt;p class="font-mono"&gt;Monospace text&lt;/p&gt;
+        </pre>
+      </div>
+      <div class="space-y-1 p-4 bg-white/25 rounded">
+        <p class="font-sans">.font-sans → Sans-serif</p>
+        <p class="font-serif">.font-serif → Serif</p>
+        <p class="font-mono">.font-mono → Monospace</p>
+      </div>
+    </div>
+
+    <!-- Font Sizes -->
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <h3>Font Sizes</h3>
+        <p>Use <code>text-{size}</code> classes to control font size.</p>
+        <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;p class="text-sm"&gt;Small&lt;/p&gt;
+&lt;p class="text-base"&gt;Base&lt;/p&gt;
+&lt;p class="text-lg"&gt;Large&lt;/p&gt;
+&lt;p class="text-xl"&gt;Extra Large&lt;/p&gt;
+        </pre>
+      </div>
+      <div class="space-y-1 p-4 bg-white/25 rounded">
+        <p class="text-sm">.text-sm → Small</p>
+        <p class="text-base">.text-base → Base</p>
+        <p class="text-lg">.text-lg → Large</p>
+        <p class="text-xl">.text-xl → Extra Large</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Colors Section -->
+  <section class="space-y-6">
+    <h3 class="mb-4">Colors</h3>
+
+    <!-- Text Colors -->
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+         <h3>Text Colors</h3>
+        <p>Use <code>text-{color}-{shade}</code> to style text colors.</p>
+        <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;p class="text-red-500"&gt;Red&lt;/p&gt;
+&lt;p class="text-blue-500"&gt;Blue&lt;/p&gt;
+        </pre>
+      </div>
+      <div class="space-y-1 p-4 bg-white/25 rounded">
+        <p class="text-red-500">Red text (.text-red-500)</p>
+        <p class="text-blue-500">Blue text (.text-blue-500)</p>
+      </div>
+    </div>
+
+    <!-- Background Colors -->
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+         <h3>Background Colors</h3>
+        <p>Use <code>bg-{color}-{shade}</code> for backgrounds.</p>
+        <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;div class="bg-red-200 p-2"&gt;Red background&lt;/div&gt;
+&lt;div class="bg-blue-200 p-2"&gt;Blue background&lt;/div&gt;
+        </pre>
+      </div>
+      <div class="space-y-1 p-4 bg-white/25 rounded">
+        <div class="bg-red-200 p-2 rounded">Red background (.bg-red-200)</div>
+        <div class="bg-blue-200 p-2 rounded">Blue background (.bg-blue-200)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grids Section -->
+  <section class="space-y-6">
+    <h3 class="mb-4">Grids</h3>
+
+    <!-- Grid Example -->
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+         <h3>Basic Grid</h3>
+        <p>Use <code>grid</code> and <code>grid-cols-{n}</code> to create grids.</p>
+        <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;div class="grid grid-cols-3 gap-4"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+  &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;
+        </pre>
+      </div>
+      <div class="space-y-1 p-4 bg-white/25 rounded">
+        <div class="grid grid-cols-3 gap-4 p-2 bg-gray-100 rounded">
+          <div class="bg-blue-200 p-2 text-center">Item 1</div>
+          <div class="bg-blue-300 p-2 text-center">Item 2</div>
+          <div class="bg-blue-400 p-2 text-center">Item 3</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buttons & UI Section -->
+  <section class="space-y-6">
+    <h3 class="mb-4">Buttons & UI Elements</h3>
+
+    <!-- Buttons -->
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+         <h3>Buttons</h3>
+        <p>Use padding, colors, rounded corners, and hover states.</p>
+        <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;button class="bg-blue-500 text-white px-4 py-2 rounded"&gt;Primary&lt;/button&gt;
+&lt;button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"&gt;Success&lt;/button&gt;
+        </pre>
+      </div>
+      <div class="space-y-2 p-4 bg-white/25 rounded">
+        <button class="bg-blue-500 text-white px-4 py-2 rounded">Primary</button>
+        <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Success</button>
+      </div>
+    </div>
+
+    <!-- Inputs -->
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+         <h3>Inputs & Textareas</h3>
+        <p>Use borders, padding, rounded corners, and focus states.</p>
+        <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;input class="border p-2 rounded focus:ring-2 focus:ring-blue-500"&gt;
+&lt;textarea class="border p-2 rounded"&gt;&lt;/textarea&gt;
+        </pre>
+      </div>
+      <div class="space-y-2 p-4 bg-white/25 rounded">
+        <input type="text" class="border p-2 rounded focus:ring-2 focus:ring-blue-500 w-full" placeholder="Text input">
+        <textarea class="border p-2 rounded w-full" rows="3" placeholder="Textarea"></textarea>
+      </div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+         <h3>Alerts / Messages</h3>
+        <p>Use background colors, borders, and padding for alerts.</p>
+        <pre class="bg-gray-800 text-white p-2 rounded font-mono mt-2">
+&lt;div class="bg-red-100 border-l-4 border-red-500 p-4"&gt;Error&lt;/div&gt;
+&lt;div class="bg-green-100 border-l-4 border-green-500 p-4"&gt;Success&lt;/div&gt;
+        </pre>
+      </div>
+      <div class="space-y-2 p-4 bg-white/25 rounded">
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded">Error message</div>
+        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded">Success message</div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+
+
+
+  </div>
+</body>
+</html>

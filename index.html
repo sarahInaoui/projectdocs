@@ -1,205 +1,209 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inaoui Sarah | Portfolio</title>
-    <style>
-        /* =========================
-           KLEUREN & VARIABELEN
-           ========================= */
-        :root {
-            --primary-color: #800020;    /* bordeaux */
-            --secondary-color: #560a0a;  /* bruin */
-            --bg-color: #fff;            /* wit */
-            --light-color: #f5f0ed;      /* lichte achtergrond */
-            --text-color: #3d2c2a;       /* donkerbruin tekst */
-            --hover-color: #ffd6dc;      /* hover accent */
-        }
-
-        /* =========================
-           RESET EN BASIS
-           ========================= */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
-
-        /* =========================
-           HEADER & NAVIGATIE
-           ========================= */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 1rem 2rem;
-            border-radius: 0 0 10px 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        .header .title { font-size: 1.5rem; font-weight: 600; }
-        .vertical-buttons { list-style: none; display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .vertical-buttons li a {
-            text-decoration: none;
-            color: #fff;
-            background-color: var(--secondary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-        .vertical-buttons li a:hover {
-            background-color: var(--hover-color);
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           HERO-SECITIE
-           ========================= */
-        .hero {
-            background-color: var(--primary-color);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5rem 2rem;
-            text-align: center;
-            margin: 1rem 0;
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.5rem; margin-bottom: 2rem; color: var(--light-color); }
-        .hero-button {
-            text-decoration: none;
-            background-color: var(--secondary-color);
-            color: #fff;
-            padding: 0.8rem 2rem;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        .hero-button:hover {
-            background-color: #fff;
-            color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        /* =========================
-           MAIN CONTENT
-           ========================= */
-        main { max-width: 1000px; margin: 3rem auto; padding: 0 1rem; }
-        h1 { color: var(--primary-color); margin-bottom: 1rem; }
-        h2 { color: var(--secondary-color); margin-bottom: 2rem; }
-        p { margin-bottom: 1.5rem; }
-
-        /* =========================
-           TWEE KOLUMEN
-           ========================= */
-        .two-columns { display: flex; gap: 2rem; flex-wrap: wrap; }
-        .column {
-            flex: 1;
-            background-color: var(--light-color);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .column:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        /* =========================
-           KAARTEN
-           ========================= */
-        .card-container { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; }
-        .card {
-            flex: 1 1 300px;
-            background-color: var(--light-color);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        /* =========================
-           FOOTER
-           ========================= */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--primary-color);
-            color: #fff;
-            margin-top: 4rem;
-            border-radius: 10px 10px 0 0;
-        }
-
-        /* =========================
-           RESPONSIVE
-           ========================= */
-        @media (max-width: 768px) {
-            .two-columns, .card-container { flex-direction: column; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.2rem; }
-            .vertical-buttons { justify-content: center; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwind Utility Classes Overview</title>
+  <link href="./dist/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/flexboxes.css">
+  <link rel="stylesheet" href="assets/nav.css">
+  <link rel="stylesheet" href="assets/typography.css">
+  <style>
+    /* Simple scroll animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
+<body class="font-sans text-gray-800">
 
-<body>
+  <!-- Header Navigation -->
+  <header class="w-full shadow p-4 flex items-center justify-between fixed top-0 z-50">
+    <a class="px-2 py-2 rounded text-xs " href="index.html">BP HTML 07 Tailwind</a>
+    <nav>
+      <ul class="flex space-x-4 text-xs">
+         <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page1.html">Typography</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page2.html">Colors</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page3.html">Grids</a></li> 
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page4.html">UI</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page5.html">Tables</a></li>
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page6.html">Components</a></li> 
+        <li><a class="px-2 py-2 rounded color-white hover:bg-white  " href="page7.html">Cheatsheet</a></li> 
+      </ul>
+    </nav>
+  </header>
 
-    <header class="header">
-        <div class="title">Inaoui Sarah 1GDM1</div>
-        <ul class="vertical-buttons">
-            <li><a href="week1.html">Week 1</a></li>
-            <li><a href="week2.html">Week 2</a></li>
-            <li><a href="week3.html">Week 3</a></li>
-            <li><a href="week4.html">Week 4</a></li>
-            <li><a href="week5.html">Week 5</a></li>
-            <li><a href="week6.html">Week 6</a></li>
-            <li><a href="week7.html">Week 7</a></li>
-            <li><a href="week8.html">Week 8</a></li>
-        </ul>
-    </header>
+  <div class="flex pt-20 mt-20">
+    <!-- Side Navigation -->
+    <aside class="hidden md:flex flex-col w-1/3 p-4 sticky top-20 h-screen space-y-2">
+      <h3><a href="#tailwind" class="px-2 py-2 rounded color-white hover:bg-white  ">About tailwind</a></h3>
+      <h3><a href="#intro" class="px-2 py-2 rounded color-white hover:bg-white  ">Utility classes</a></h3>
+      <h3><a href="#fonts" class="px-2 py-2 rounded color-white hover:bg-white  ">Fonts</a></h3>
+      <h3><a href="#colors" class="px-2 py-2 rounded color-white hover:bg-white  ">Colors</a></h3>
+      <h3><a href="#grids" class="px-2 py-2 rounded color-white hover:bg-white  ">Grids</a></h3>
+      <h3><a href="#ui" class="px-2 py-2 rounded color-white hover:bg-white  ">UI Elements</a></h3>
+      <h3><a href="#tables" class="px-2 py-2 rounded color-white hover:bg-white  ">Tables</a></h3>
+    </aside>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welkom op mijn website</h1>
-            <p>Ontdek mijn projecten, ideeën en creatieve werk</p>
-            <a href="#main-content" class="hero-button">Bekijk meer</a>
+    <!-- Main Content -->
+    <main class="flex-1 p-6 space-y-8">
+
+      <!-- Tailwind Section -->
+      <section id="tailwind" class="fade-in p-6 bg-white/40 rounded shadow">
+        <h3 class="font-bold mb-4">What is Tailwind?</h3>
+        <p class="text-lg mb-2">
+          Tailwind CSS is a design system framework for developers.
+          Instead of inventing custom styles every time, it provides a predefined set of design tokens (colors, spacing, typography, borders, shadows, etc.) that can be combined to build any UI.
+        </p>
+      </section>
+
+      <!-- Intro Section -->
+      <section id="intro" class="fade-in p-6 bg-white/40 rounded shadow">
+        <h3 class="font-bold mb-4">What Are Utility Classes?</h3>
+        <p class="text-lg mb-2">Utility classes in Tailwind CSS are small, single-purpose classes that allow you to control a specific property directly in HTML.</p>
+        <p class="text-lg">They help UX & UI designers rapidly build layouts, typography, colors, and spacing without writing custom CSS, keeping your design consistent and maintainable.</p>
+      </section>
+
+      <!-- Fonts Section -->
+      <section id="fonts" class="fade-in p-6 bg-white/40 rounded shadow">
+        <h3 class="mb-4">Fonts</h3>
+        <p class="mb-2">Tailwind provides font families, sizes, weights, and more:</p>
+        <div class="grid grid-cols-2 gap-6">
+          <div class="space-y-1">
+            <p class="font-sans">.font-sans → Sans-serif</p>
+            <p class="font-serif">.font-serif → Serif</p>
+            <p class="font-mono">.font-mono → Monospace</p>
+            <p class="text-lg font-bold">.text-lg → Large text</p>
+            <p class="font-semibold">.font-semibold → Medium boldness</p>
+          </div>
+          <div class="p-4 bg-white/25 rounded space-y-2">
+            <p class="font-sans">This is sans-serif</p>
+            <p class="font-serif">This is serif</p>
+            <p class="font-mono">This is monospace</p>
+            <p class="text-lg font-bold">Large bold text</p>
+            <p class="font-semibold">Medium bold text</p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <main id="main-content">
-        <h1>mijn eerste online site</h1>
-        <h2>Door Inaoui Sarah</h2>
-
-        <p>Om te beginnen ben ik gestart met schetsen te maken voor de treintijden.</p>
-
-        <div class="two-columns">
-            <div class="column">
-                <p>hoe ziet een treinbord eruit? hoe ga ik dit regelen?</p>
-            </div>
-            <div class="column">
-                <p>daarna hebben we samen gevraagd om de afbeelding die we in figma maakten over te zetten naar een code die in html gezet kan worden.</p>
-            </div>
+      <!-- Colors Section -->
+      <section id="colors" class="fade-in p-6 bg-white/40 rounded shadow">
+        <h3 class="mb-4">Colors</h3>
+        <p class="mb-2">Text, background, border, and hover colors are all utility classes:</p>
+        <div class="grid grid-cols-2 gap-6">
+          <div class="space-y-1">
+            <p>.text-red-500 → Red text</p>
+            <p>.bg-blue-200 → Blue background</p>
+            <p>.border-green-500 → Green border</p>
+            <p>.hover:bg-yellow-200 → Yellow background on hover</p>
+          </div>
+          <div class="p-4 bg-white/25 rounded space-y-2">
+            <p class="text-red-500">Red text</p>
+            <div class="bg-blue-200 p-2 rounded">Blue background</div>
+            <div class="border-4 border-green-500 p-2 rounded">Green border</div>
+            <div class="hover:bg-yellow-200 p-2 rounded">Hover me → Yellow</div>
+          </div>
         </div>
+      </section>
 
+      <!-- Grids Section -->
+      <section id="grids" class="fade-in p-6 bg-white/40 rounded shadow">
+        <h3 class="mb-4">Grids</h3>
+        <p class="mb-2">Use Tailwind's grid system for layout:</p>
+        <div class="grid grid-cols-2 gap-6">
+          <div class="space-y-1">
+            <p>.grid → Enable grid layout</p>
+            <p>.grid-cols-2 → 2 columns</p>
+            <p>.gap-4 → Spacing between items</p>
+          </div>
+          <div class="p-4 bg-white/25 rounded grid grid-cols-2 gap-4">
+            <div class="p-4 bg-blue-100 text-center">Col 1</div>
+            <div class="p-4 bg-green-100 text-center">Col 2</div>
+            <div class="p-4 bg-red-100 text-center">Col 3</div>
+            <div class="p-4 bg-yellow-100 text-center">Col 4</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- UI Elements Section -->
+      <section id="ui" class="fade-in p-6 bg-white/40 rounded shadow">
+        <h3 class="mb-4">UI Elements</h3>
+        <p class="mb-2">Buttons, cards, alerts, and more can be styled quickly:</p>
+        <div class="grid grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <p>.btn → Button styling</p>
+            <p>.rounded → Rounded corners</p>
+            <p>.shadow → Box shadow</p>
+            <p>.p-4 → Padding</p>
+          </div>
+          <div class="p-4 bg-white/25 rounded space-y-2">
+            <button class="bg-blue-500 text-white p-2 rounded shadow hover:bg-blue-600">Primary Button</button>
+            <div class="p-4 bg-gray-100 rounded shadow">Card Example</div>
+            <div class="p-4 bg-red-100 rounded shadow text-red-700">Alert Example</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tables Section -->
+      <section id="tables" class="fade-in p-6 bg-white/40 rounded shadow">
+        <h3 class="mb-4">Tables</h3>
+        <p class="mb-2">Tables can be quickly styled with borders, stripes, and responsive scrolling:</p>
+        <div class="grid grid-cols-2 gap-6">
+          <div class="space-y-1">
+            <p>.table-auto → Automatic table layout</p>
+            <p>.border → Add border</p>
+            <p>.bg-gray-50 → Stripe background</p>
+            <p>.overflow-x-auto → Scroll on small screens</p>
+          </div>
+          <div class="p-4 bg-white/25 rounded overflow-x-auto">
+            <table class="table-auto border border-gray-300 w-full">
+              <thead class="bg-gray-100">
+                <tr>
+                  <th class="border px-4 py-2">Name</th>
+                  <th class="border px-4 py-2">Age</th>
+                  <th class="border px-4 py-2">City</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-gray-50">
+                  <td class="border px-4 py-2">Alice</td>
+                  <td class="border px-4 py-2">25</td>
+                  <td class="border px-4 py-2">New York</td>
+                </tr>
+                <tr>
+                  <td class="border px-4 py-2">Bob</td>
+                  <td class="border px-4 py-2">30</td>
+                  <td class="border px-4 py-2">Los Angeles</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
     </main>
+  </div>
 
-    <footer>
-        &copy; 2025 Inaoui Sarah | Alle rechten voorbehouden
-    </footer>
+  <script>
+    // Intersection Observer to animate sections on scroll
+    const sections = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
 
 </body>
 </html>
-
