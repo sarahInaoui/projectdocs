@@ -5,31 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inaoui Sarah | Portfolio</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
 
     <header class="header">
         <div class="title">Inaoui Sarah 1GDM1</div>
-          <ul class="vertical-buttons">
-            <li><a href="week1.html">Week 1</a></li>
-            <li><a href="week2.html">Week 2</a></li>
-            <li><a href="week3.html">Week 3</a></li>
-            <li><a href="week4.html">Week 4</a></li>
-            <li><a href="week5.html">Week 5</a></li>
-            <li><a href="week6.html">Week 6</a></li>
-            <li><a href="week7.html">Week 7</a></li>
-            <li><a href="week8.html">Week 8</a></li>
-        </ul>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welkom op mijn website</h1>
-            <p>Ontdek mijn projecten, ideeën en creatieve werk</p>
-            <a href="#main-content" class="hero-button">Bekijk meer</a>
-        </div>
+    <ul class="vertical-buttons">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="week1.html" class="active-page">Week 1</a></li>
+        <li><a href="week2.html">Week 2</a></li>
+        <li><a href="week3.html">Week 3</a></li>
+        <li><a href="week4.html">Week 4</a></li>
+        <li><a href="week5.html">Week 5</a></li>
+        <li><a href="week6.html">Week 6</a></li>
+        <li><a href="week7.html">Week 7</a></li>
+        <li><a href="week8.html">Week 8</a></li>
+    </ul>
+
+    <!-- Slideshow (homepagina) -->
+    <section class="carousel" aria-label="Slideshow">
+    <a class="slide" href="#lb1">
+        <img src="images/image-1.png" alt="Foto 1">
+    </a>
+    <a class="slide" href="#lb2">
+        <img src="images/image-2.png" alt="Foto 2">
+    </a>
+    <a class="slide" href="#lb3">
+        <img src="images/image-3.png" alt="Foto 3">
+    </a>
     </section>
+
+    <!-- Lightbox fullscreen (popup) -->
+    <div id="lb1" class="lightbox">
+    <a href="#" class="bg" aria-label="Sluiten"></a>
+    <div class="content">
+        <a href="#" class="close" aria-label="Sluiten">&times;</a>
+        <img src="images/image-1.png" alt="Foto 1 fullscreen">
+    </div>
+    </div>
+
+    <div id="lb2" class="lightbox">
+    <a href="#" class="bg" aria-label="Sluiten"></a>
+    <div class="content">
+        <a href="#" class="close" aria-label="Sluiten">&times;</a>
+        <img src="images/image-2.png" alt="Foto 2 fullscreen">
+    </div>
+    </div>
+
+    <div id="lb3" class="lightbox">
+    <a href="#" class="bg" aria-label="Sluiten"></a>
+    <div class="content">
+        <a href="#" class="close" aria-label="Sluiten">&times;</a>
+        <img src="images/image-3.png" alt="Foto 3 fullscreen">
+    </div>
+    </div>
 
     <main id="main-content">
         <h1>mijn eerste online site</h1>
