@@ -360,11 +360,37 @@ footer {
 }
 
 .mainpicture {
- display: block;
-  margin-left: 155px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+   align: left;
+   margin-left: 145px;
+   width: 25%;
 }
+
+.mainpicture img {
+    border-radius: 20px; 
+}
+.secondpicture {
+align: left; 
+width: 25%;
+margin-left: 45px;
+}
+.secondpicture img {
+  border-radius: 20px;
+}
+
+.thirdpicture {
+  align: left;
+  width: 25%;
+  margin-left: 45px; 
+}
+.thirdpicture img {
+  border-radius: 20px; 
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 65px;
+}
+
 
 
 
