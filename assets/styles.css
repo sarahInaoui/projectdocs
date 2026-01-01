@@ -24,6 +24,10 @@ body {
     overflow-y: auto;
 }
 
+video {
+    margin-top: 2rem;
+}
+
 /* -----------------------------
    Header
 ----------------------------- */
@@ -101,23 +105,6 @@ body {
     font-size: 1.2rem;
     color: #444;
     margin-bottom: 2rem;
-}
-
-.hero-button {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    font-weight: 600;
-    border-radius: 50px;
-    background: #1a73e8;
-    color: #fff;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.hero-button:hover {
-    background: #155bb5;
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 /* -----------------------------
@@ -358,37 +345,126 @@ footer {
   margin: 30px 0;
   margin-top: 50px
 }
-
-.mainpicture {
-   align: left;
-   margin-left: 145px;
-   width: 25%;
+.slider {
+  width: 900px;
+  margin: 50px auto;
+  position: relative;
 }
 
-.mainpicture img {
-    border-radius: 20px; 
+.slider input { display: none; }
+
+.slides {
+  position: relative;
+  width: 100%;
+  height: 250px;
 }
-.secondpicture {
-align: left; 
-width: 25%;
-margin-left: 45px;
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 350px;
+  transform: translateX(-50%) scale(0.8);
+  opacity: 0.4;
+  transition: all 0.5s ease;
 }
-.secondpicture img {
+
+.card img {
+  width: 100%;
   border-radius: 20px;
+  pointer-events: none; /* heel belangrijk! */
 }
 
-.thirdpicture {
-  align: left;
-  width: 25%;
-  margin-left: 45px; 
+/* alleen middenfoto klikbaar */
+.center img {
+  cursor: pointer !important;
+  pointer-events: auto;  /* klik actief */
 }
-.thirdpicture img {
-  border-radius: 20px; 
+
+/* Posities */
+#s1:checked ~ .slides .c1 {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  z-index: 2;
 }
-.row {
+#s1:checked ~ .slides .c2 {
+  transform: translateX(20%) scale(0.8);
+}
+#s1:checked ~ .slides .c3 {
+  transform: translateX(-120%) scale(0.8);
+}
+
+#s2:checked ~ .slides .c2 {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  z-index: 2;
+}
+#s2:checked ~ .slides .c3 {
+  transform: translateX(20%) scale(0.8);
+}
+#s2:checked ~ .slides .c1 {
+  transform: translateX(-120%) scale(0.8);
+}
+
+#s3:checked ~ .slides .c3 {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  z-index: 2;
+}
+#s3:checked ~ .slides .c1 {
+  transform: translateX(20%) scale(0.8);
+}
+#s3:checked ~ .slides .c2 {
+  transform: translateX(-120%) scale(0.8);
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.popup img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.close-btn {
+  position: absolute;
+  top: 40px;
+  right: 55px;
+  font-size: 55px;
+  color: white;
+  cursor: pointer;
+}
+
+.nav {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 65px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  background: #aaa;
+  border-radius: 50%;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* actieve bol */
+#s1:checked ~ .nav label:nth-child(1),
+#s2:checked ~ .nav label:nth-child(2),
+#s3:checked ~ .nav label:nth-child(3) {
+  background: #333;
 }
 
 

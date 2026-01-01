@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inaoui Sarah | Portfolio</title>
     <link rel="stylesheet" href="assets/styles.css">
-  <link href="dist/output.css" rel="stylesheet">
+    <link href="dist/output.css" rel="stylesheet">
+    <script src="slider.js" defer></script>
 
 
 
@@ -27,6 +28,9 @@
         <li><a href="week6.html">Week 6</a></li>
         <li><a href="week7.html">Week 7</a></li>
         <li><a href="week8.html">Week 8</a></li>
+        <li><a href="week9.html">week 9</a></li>
+        <li><a href="week10.html">week 10</a></li>
+        
     </ul>
 
     <section class="hero">
@@ -36,18 +40,41 @@
         </div>
     </section>
     <hr class="scheiding">
-    <div class="row">
-    <div class="mainpicture">
-    <img src="images/image-10.png">
+    <div class="slider">
 
-</div>
-<div class="secondpicture">
-   <img src="images/image-11.jpg">
-</div>
-<div class="thirdpicture">
-    <img src="images/image-12.jpg">
-</div>
-</div>
+        <input type="radio" name="slider" id="s1" checked>
+        <input type="radio" name="slider" id="s2">
+        <input type="radio" name="slider" id="s3">
+
+        <div class="slides">
+
+            <div class="card c1" data-slide="1">
+                <img src="images/image-10.png">
+            </div>
+
+            <div class="card c2" data-slide="2">
+                <img src="images/image-11.jpg">
+            </div>
+
+            <div class="card c3" data-slide="3">
+                <img src="images/image-12.jpg">
+            </div>
+
+        </div>
+
+        <div class="nav">
+            <label for="s1" class="dot"></label>
+            <label for="s2" class="dot"></label>
+            <label for="s3" class="dot"></label>
+        </div>
+
+    </div>
+
+    <!-- POPUP -->
+    <div class="popup" id="popup">
+        <span class="close-btn" id="closePopup">&times;</span>
+        <img id="popupImage" src="">
+    </div>
 
 <div class="flex justify-center gap-20 mt-6 mb-16">
   <a href="https://github.com/sarahInaoui/projectdocs" target="_blank"
@@ -60,6 +87,23 @@
     Netlify
   </a>
 </div>
+<div class="flex justify-center gap-20 mt-6 mb-16">
+  <a
+    href="https://www.figma.com/proto/fZ8RUoWsa5kWTB3QO8fWis/2526_PTTS_SarahInaoui_oefLW3?node-id=0-1&t=powblWhhwOGkiCzY-1"
+    target="_blank"
+    class="bg-purple-300 px-6 py-3 font-semibold rounded-lg shadow-md text-purple-900 hover:bg-purple-400 transition"
+  >
+    Figma
+  </a>
+</div>
+<div class="flex justify-center gap-20 mt-6 mb-16 underline bold">
+<a href="assets/lost in trainslation.zip" download class="download-btn">
+  Download ZIP
+</a>
+</div>
+
+
+
 <!-- Footer -->
 <footer class="bg-white-800 text-white py-6 mt-10">
   <div class="container mx-auto text-center">
