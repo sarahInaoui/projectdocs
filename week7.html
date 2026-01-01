@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
+     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inaoui Sarah | Portfolio</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <script src="script.js" defer></script>
+
+    <link href="dist/output.css" rel="stylesheet">
 </head>
 
 <body>
@@ -23,66 +26,155 @@
         <li><a href="week6.html">Week 6</a></li>
         <li><a href="week7.html" class="active-page">Week 7</a></li>
         <li><a href="week8.html">Week 8</a></li>
+        <li><a href="week9.html">week 9</a></li>
+        <li><a href="week10.html">week 10</a></li>
     </ul>
-
-       <!-- Slideshow (homepagina) -->
-    <section class="carousel" aria-label="Slideshow">
-    <a class="slide" href="#lb1">
-        <img src="images/image-9.png" alt="Foto 1">
-    </a>
-    <a class="slide" href="#lb2">
-        <img src="images/image-5.png" alt="Foto 2">
-    </a>
-    <a class="slide" href="#lb3">
-        <img src="images/image-6.png" alt="Foto 3">
-    </a>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Week 1</h1>
+        </div>
     </section>
-
-    <!-- Lightbox fullscreen (popup) -->
-    <div id="lb1" class="lightbox">
-    <a href="#" class="bg" aria-label="Sluiten"></a>
-    <div class="content">
-        <a href="#" class="close" aria-label="Sluiten">&times;</a>
-        <img src="images/image-9.png" alt="Foto 1 fullscreen">
-    </div>
-    </div>
-
-    <div id="lb2" class="lightbox">
-    <a href="#" class="bg" aria-label="Sluiten"></a>
-    <div class="content">
-        <a href="#" class="close" aria-label="Sluiten">&times;</a>
-        <img src="images/image-5.png" alt="Foto 2 fullscreen">
-    </div>
+    <!-- Slideshow (homepagina) -->
+<section class="relative w-full max-w-3xl mx-auto mt-10">
+  <!-- Slides -->
+  <div class="overflow-hidden relative">
+    <div class="flex transition-transform duration-500" id="carousel-slides">
+      <div class="min-w-full">
+        <img src="images/image-week7(2).png" alt="Foto 1" class="w-full">
+      </div>
+      <div class="min-w-full">
+        <img src="images/image-week7(1).png" alt="Foto 2" class="w-full">
+      </div>
+      <div class="min-w-full">
+        <img src="images/image-week7(3).png" alt="Foto 3" class="w-full">
+      </div>
     </div>
 
-    <div id="lb3" class="lightbox">
-    <a href="#" class="bg" aria-label="Sluiten"></a>
-    <div class="content">
-        <a href="#" class="close" aria-label="Sluiten">&times;</a>
-        <img src="images/image-6.png" alt="Foto 3 fullscreen">
+    <!-- Left Arrow -->
+    <button id="prev" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-gray-700">
+      &#10094;
+    </button>
+
+    <!-- Right Arrow -->
+    <button id="next" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-gray-700">
+      &#10095;
+    </button>
+  </div>
+
+  <!-- Indicators -->
+  <div class="flex justify-center mt-4 space-x-2">
+    <button class="w-3 h-3 rounded-full bg-gray-400" data-slide="0"></button>
+    <button class="w-3 h-3 rounded-full bg-gray-400" data-slide="1"></button>
+    <button class="w-3 h-3 rounded-full bg-gray-400" data-slide="2"></button>
+  </div>
+</section>
+
+    <!-- POPUP -->
+    <div class="popup fixed inset-0 bg-black/80 hidden justify-center items-center z-50" id="popup">
+        <span class="close-btn absolute top-6 right-8 text-5xl text-white cursor-pointer" id="closePopup">&times;</span>
+        <img id="popupImage" class="max-w-[90%] max-height-[90%] rounded-xl shadow-xl" src="">
     </div>
-    </div>
+
+<script>
+  const slides = document.getElementById('carousel-slides');
+  const indicators = document.querySelectorAll('[data-slide]');
+  const total = slides.children.length;
+  let index = 0;
+
+  function updateCarousel() {
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    indicators.forEach((btn,i) => {
+      btn.classList.toggle('bg-gray-800', i === index);
+      btn.classList.toggle('bg-gray-400', i !== index);
+    });
+  }
+
+  // Next & Prev buttons
+  document.getElementById('next').addEventListener('click', () => {
+    index = (index + 1) % total;
+    updateCarousel();
+  });
+
+  document.getElementById('prev').addEventListener('click', () => {
+    index = (index - 1 + total) % total;
+    updateCarousel();
+  });
+
+  // Indicator buttons
+  indicators.forEach(btn => {
+    btn.addEventListener('click', () => {
+      index = parseInt(btn.dataset.slide);
+      updateCarousel();
+    });
+  });
+
+  // Keyboard support
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'ArrowRight') {
+      index = (index + 1) % total;
+      updateCarousel();
+    }
+    if(e.key === 'ArrowLeft') {
+      index = (index - 1 + total) % total;
+      updateCarousel();
+    }
+  });
+
+  // Initialize
+  updateCarousel();
+
+    const popup = document.getElementById("popup");
+const popupImage = document.getElementById("popupImage");
+const closePopup = document.getElementById("closePopup");
+
+// alle foto's binnen de carousel klikbaar maken
+document.querySelectorAll("#carousel-slides img").forEach(img => {
+  img.style.cursor = "pointer";
+  img.addEventListener("click", () => {
+    popupImage.src = img.src;
+    popup.classList.remove("hidden");
+    popup.classList.add("flex");
+  });
+});
+
+// sluit popup bij klik op X
+closePopup.addEventListener("click", () => {
+  popup.classList.add("hidden");
+  popup.classList.remove("flex");
+});
+
+// sluit popup bij klik op donkere achtergrond
+popup.addEventListener("click", (e) => {
+  if (e.target === popup) {
+    popup.classList.add("hidden");
+    popup.classList.remove("flex");
+  }
+});
+</script>
 
     <main id="main-content">
-        <h1>mijn eerste online site</h1>
+       <h1 class="text-4xl font-bold">mijn eerste online site</h1>
         <h2>Door Inaoui Sarah</h2>
                <p>
-                tailwind en designen
+                tailwindcss
             </p>
 
             <div class="two-columns">
 
                 <div class="column">
                     <p>
-                      tailwind
+                     Nu gaan we meer aandacht vestigen op tailwindcss.
                     </p>
                 </div>
 
                 <div class="column">
                     <p>
-                        Tijdens deze les kregen we weer een gesplitste uitleg per uur, we gingen eerst aan de slag
-                        met figma en kregen les over hoe we iconen en designs logisch konden plaatsen in een geheel. 
-                        Daarna kregen we les iver tailwind, waarin we al onze schermen moesten zetten in tailwind. 
+                        Weer splitste de groepen op aangezien de mac gebruikers tailwind css makkelijker konden installeren dan 
+                        windows/pc gebruikers. 
+                        In de afbeeldingen die ik hierboven geplaatst heb laat ik zien hoe je tailwindcss gebruikt binnen je project.
+                        Eerst pas je in je paragraaf,head, etc een prompt met een class die aangeeft wat je veranderd wil zien in je code. 
+                        daarna ga je bij je terminal het commando 'npm run build' ingeven en uiteindelijk zien we het eindresultaat 
+                        op onze website verschijnen.  
                     </p>
                 </div>
         </div>
